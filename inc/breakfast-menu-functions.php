@@ -34,12 +34,12 @@ remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30
 
 
 // Output Hero Section for Breakfast Menu
- function output_acf_fields_for_breakfast_menu_category() {
-	if (is_product_category('breakfast')) {
-		$category = get_queried_object();
+ function output_menu_acf_hero_fields() {
+	if (is_product_category()) {
+		$categoryObject = get_queried_object();
 
-		if ($category) {
-			$productCategory = 'product_cat_' . $category->term_id;
+		if ($categoryObject) {
+			$productCategory = 'product_cat_' . $categoryObject->term_id;
 			$heroHeading = get_field('breakfast_menu_hero_heading', $productCategory);
 			$heroDescription = get_field('breakfast_menu_hero_short_description', $productCategory);
 			$heroImage = get_field('breakfast_menu_hero_image', $productCategory);
@@ -54,16 +54,18 @@ remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30
 		}
 	}
 }
-add_action('woocommerce_archive_description', 'output_acf_fields_for_breakfast_menu_category');
+add_action('woocommerce_archive_description', 'output_menu_acf_hero_fields');
 
 
 // Output Subnavigation for Breakfast Terms
-function output_subnavigation_for_breakfast_menu() {
-    if (is_product_category('breakfast')) {
-        $terms = get_terms(array(
-            'taxonomy' => 'noc-breakfast-subcategories',
-            'hide_empty' => false,
-        ));
+function output_menu_subnavigation() {
+    if (is_product_category()) {
+            $categoryObject = get_queried_object();
+            $taxonomy = 'noc-' . $categoryObject->slug . '-subcategories';
+            $terms = get_terms(array(
+                'taxonomy' => $taxonomy,
+                'hide_empty' => false,
+            ));
         
         if ($terms && !is_wp_error($terms)) {
             ?>
@@ -80,13 +82,15 @@ function output_subnavigation_for_breakfast_menu() {
         }
     }
 }
-add_action('woocommerce_before_shop_loop','output_subnavigation_for_breakfast_menu',21);
+add_action('woocommerce_before_shop_loop','output_menu_subnavigation',21);
 
-// Output Custom Taxonomy "Breakfast Categories" Terms and Products Associated with Each Term
-function output_breakfast_categories() {
-    if (is_product_category('breakfast')) {
+// Output Custom Taxonomy Terms and Menu Items
+function output_menu_titles_and_items() {
+    if (is_product_category()) {
+        $categoryObject = get_queried_object();
+        $taxonomy = 'noc-' . $categoryObject->slug . '-subcategories';
         $terms = get_terms(array(
-            'taxonomy' => 'noc-breakfast-subcategories',
+            'taxonomy' => $taxonomy,
             'hide_empty' => false,
         ));
         ?>
@@ -104,7 +108,7 @@ function output_breakfast_categories() {
                     'posts_per_page' => -1,
                     'tax_query' => array(
                         array(
-                            'taxonomy' => 'noc-breakfast-subcategories',
+                            'taxonomy' => $taxonomy,
                             'field' => 'slug',
                             'terms' => $term
                         )
@@ -127,4 +131,4 @@ function output_breakfast_categories() {
         <?php
     }
 }
-add_action('woocommerce_before_shop_loop', 'output_breakfast_categories', 22);
+add_action('woocommerce_before_shop_loop', 'output_menu_titles_and_items', 22);
