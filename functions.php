@@ -187,3 +187,13 @@ if ( class_exists( 'WooCommerce' ) ) {
  * Custom Post Types and Taxonomies.
  */
 require get_template_directory() . '/inc/cpt-taxonomy.php';
+
+
+// test API key for ACF Google MAP
+
+function my_acf_init() {
+    
+    acf_update_setting('google_api_key', 'ADD GOOGLE API KEY LATER');
+}
+
+add_action('acf/init', 'my_acf_init');
