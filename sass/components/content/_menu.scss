@@ -3,6 +3,24 @@
     display: none;
 }
 
-.breakfast-menu-items ul {
+.menu-items ul {
     display: none;
+}
+
+/* --------------------------------------------- */
+
+.menu-items {
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.menu-items h2 {
+    display: block;
+    width: 100%;
+}
+
+.menu-items li {
+    padding: 1rem;
+    width: 15rem; 
 }

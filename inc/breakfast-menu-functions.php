@@ -67,7 +67,7 @@ function output_subnavigation_for_breakfast_menu() {
         
         if ($terms && !is_wp_error($terms)) {
             ?>
-            <ul class="breakfast-menu-subnav">
+            <ul class="menu-subnav">
             <?php
             foreach($terms as $term) {
                 ?>
@@ -89,6 +89,9 @@ function output_breakfast_categories() {
             'taxonomy' => 'noc-breakfast-subcategories',
             'hide_empty' => false,
         ));
+        ?>
+        <ul class="menu-items">
+        <?php
     
         foreach($terms as $term) {
             if ($term && !is_wp_error($term)) {
@@ -109,23 +112,19 @@ function output_breakfast_categories() {
                 );
         
                 $query = new WP_Query($args);
-                
-                ?>
-                <ul class="breakfast-menu-items">
-                <?php
+            
                 if ($query->have_posts()) {
                     while ($query->have_posts()) {
                         $query->the_post();
                         wc_get_template_part('content', 'product');
                     }
                 }
-                ?>
-                <ul>
-                <?php
                 wp_reset_postdata();
-    
             }
         }
+        ?>
+        <ul>
+        <?php
     }
 }
 add_action('woocommerce_before_shop_loop', 'output_breakfast_categories', 22);
