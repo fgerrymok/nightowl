@@ -13,26 +13,6 @@ remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 // Remove Woocommerce Sorting Function
 remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
 
-// Remove Category Title From Breakfast Menu
-// Working on this.
-
-// Remove Default Shop Loop
-// Working on this
-
-// Remove product loop from shop page
-// function remove_woocommerce_shop_loop() {
-//     remove_action( 'woocommerce_shop_loop', 'woocommerce_template_loop_product_thumbnail', 10 );
-//     remove_action( 'woocommerce_shop_loop', 'woocommerce_template_loop_product_title', 10 );
-//     remove_action( 'woocommerce_shop_loop', 'woocommerce_template_loop_price', 10 );
-//     remove_action( 'woocommerce_shop_loop', 'woocommerce_template_loop_add_to_cart', 10 );
-//     remove_action( 'woocommerce_shop_loop', 'woocommerce_template_loop_rating', 10 );
-//     remove_action( 'woocommerce_shop_loop', 'woocommerce_template_loop_category', 10 );    
-// }
-// add_action( 'template_redirect', 'remove_woocommerce_shop_loop' );
-
-// remove_action( 'woocommerce_shop_loop', 'wc_get_template_part', 10 );
-
-
 // Output Hero Section for Breakfast Menu
  function output_menu_acf_hero_fields() {
 	if (is_product_category()) {
@@ -55,7 +35,6 @@ remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30
 	}
 }
 add_action('woocommerce_archive_description', 'output_menu_acf_hero_fields');
-
 
 // Output Subnavigation for Breakfast Terms
 function output_menu_subnavigation() {

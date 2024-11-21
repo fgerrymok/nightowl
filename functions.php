@@ -181,7 +181,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
-	require get_template_directory() . '/inc/breakfast-menu-functions.php';
+	require get_template_directory() . '/inc/menu-functions.php';
 }
 
 /**
