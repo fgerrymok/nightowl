@@ -17,12 +17,11 @@ remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30
  function output_menu_acf_hero_fields() {
 	if (is_product_category()) {
 		$categoryObject = get_queried_object();
-
 		if ($categoryObject) {
 			$productCategory = 'product_cat_' . $categoryObject->term_id;
-			$heroHeading = get_field('breakfast_menu_hero_heading', $productCategory);
-			$heroDescription = get_field('breakfast_menu_hero_short_description', $productCategory);
-			$heroImage = get_field('breakfast_menu_hero_image', $productCategory);
+			$heroHeading = get_field($categoryObject->slug . '_menu_hero_heading', $productCategory);
+			$heroDescription = get_field($categoryObject->slug . '_menu_hero_short_description', $productCategory);
+			$heroImage = get_field($categoryObject->slug . '_menu_hero_image', $productCategory);
 
 			if ($heroHeading && $heroDescription && $heroImage) {
 				?>
