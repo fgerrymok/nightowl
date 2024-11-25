@@ -110,3 +110,14 @@ function output_menu_titles_and_items() {
     }
 }
 add_action('woocommerce_before_shop_loop', 'output_menu_titles_and_items', 22);
+
+// Display Dish Excerpt
+function display_dish_excerpt() {
+    global $product;
+    if ($product) {
+        ?>
+        <p><?php echo esc_html($product->short_description); ?></p>
+        <?php
+    }
+}
+add_action('woocommerce_after_shop_loop_item_title', 'display_dish_excerpt', 20);
