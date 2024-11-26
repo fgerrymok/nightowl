@@ -63,17 +63,17 @@
 			$menu_name = 'mobile menu'; // menu name
 			$menu = wp_get_nav_menu_object($menu_name); // retrive single menu 
 
-			if ($menu) {
+			if ($menu) :
 				$menu_items = wp_get_nav_menu_items($menu->term_id); // retrive single menu item
 				
-				if ($menu_items) {
-					foreach ($menu_items as $item) {
-						echo '<li>';
-						echo '<a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
-						echo '</li>';
-					}
-				} 
-			}
+				if ($menu_items) :
+					foreach ($menu_items as $item) : ?>
+						<li><a href="<?php esc_url($item->url); ?>"> . esc_html($item->title) . </a></li>;
+
+
+					<?php endforeach;
+				endif;
+			endif;
 			?>
 
 
