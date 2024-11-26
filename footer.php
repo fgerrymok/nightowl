@@ -12,18 +12,30 @@
 ?>
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'nightowlcafe' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'nightowlcafe' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'nightowlcafe' ), 'nightowlcafe', '<a href="http://underscores.me/">Frazer Mok, Dongwon Kang, Keanna Bayaua, Fatima Pournassari</a>' );
-				?>
+		<section class="site-info">
+			<div class="footer-site-map">
+				<div>
+					<h2>Delivery</h2>
+					<?php wp_nav_menu( array(
+						'menu' => 'footer-delivery'
+						) ); ?>
+				</div>
+				<div>
+					<h2>Site Navigation</h2>
+					<?php wp_nav_menu( array(
+					'menu' => 'footer-site-nav'
+					) ); ?>
+				</div>
+			</section>
+
+			<section class="footer-copyright">
+				<p>&copy; <?php echo date('Y');?> Credits:</p>
+				<a href="<?php echo esc_url("https://frazermok.com"); ?>" target="_blank">Frazer Mok,</a>
+				<a href="<?php echo esc_url("https://dongwonkang.info"); ?>" target="_blank">Dongwon Kang,</a>
+				<a href="<?php echo esc_url("https://keannabayaua.com/"); ?>" target="_blank">Keanna Bayaua,</a> & 
+				<a href="<?php echo esc_url("https://www.fatimanassari.com/"); ?>" target="_blank">Fatima Pournassari</a>
+			</section>
+
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
