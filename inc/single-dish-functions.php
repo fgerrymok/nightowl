@@ -24,39 +24,39 @@ function get_product_attributes() {
     global $product;
     $attributes = $product->get_attributes();
     if ($attributes) {
-        foreach($attributes as $attribute) {
-            ?>
-            <article class="menu-options-box">
-                <h2><?php echo esc_html($attribute->get_name()); ?></h2>
+        ?>
+        <form action="#">
+            <fieldset>
                 <?php
-                $options = $attribute->get_options();
-                if ($options) {
+                foreach($attributes as $attribute) {
                     ?>
-                    <ul>
+                    <legend><?php echo esc_html($attribute->get_name()); ?></legend>
+                    <div class="all-options">
                     <?php
-                    foreach ($options as $option) {
-                        ?>
-                        <!-- Add structure for html radiobuttons -->
-                        <li><?php echo esc_html($option); ?></li>
-                        <?php
+                    $options = $attribute->get_options();
+                    if ($options) {
+                        $index = 0;
+                        foreach ($options as $option) {
+                            ?>
+                            <div class="one-option">
+                                <input type="radio" id="<?php echo esc_html($option); ?>" name="<?php echo esc_html($attribute->get_name()); ?>" value="<?php echo esc_html($option); ?>">
+                                <label for="<?php echo esc_html($option); ?>"><?php echo esc_html($option); ?></label>
+                            </div>
+                            <?php
+                        }
                     }
                     ?>
-                    </ul>
+                    </div>
                     <?php
                 }
-            ?>
-            </article>
-            <?php
-        }
+                ?>
+                <div>
+                    <button><?php echo esc_html("Add To Cart"); ?></button>
+                </div>
+            </fieldset>
+        </form>
+        <?php
     }
 }
 
 add_action('woocommerce_after_single_product_summary', 'get_product_attributes', 21);
-
-// Custom Add to cart button
-function custom_add_to_cart() {
-    ?>
-    <button>Add To Cart</button>
-    <?php
-}
-add_action('woocommerce_after_single_product_summary', 'custom_add_to_cart', 22);
