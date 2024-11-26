@@ -1,0 +1,63 @@
+// temp code
+.nojq.mobile {
+  display: none;
+}
+// remove it later
+
+.site-branding {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  border-bottom: 1px solid #ddd;
+}
+
+// === header left side === //
+.site-header .site-branding {
+  .custom-logo-link {
+    img {
+      width: 36px;
+    }
+  }
+  // site title
+  .site-title {
+    a {
+      display: none;
+      text-decoration: none;
+    }
+  }
+  // hide site description
+  .site-description {
+    display: none;
+  }
+}
+
+// === header right side === //
+.main-navigation {
+  display: none;
+}
+
+// mobile bottom naviagtion
+
+#site-navigation-mobile {
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  height: 56px;
+}
+
+.menu-mobile-menu-container {
+  width: 100%;
+  ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    li {
+      text-decoration: none;
+    }
+  }
+}
