@@ -116,7 +116,7 @@ function display_dish_excerpt() {
     global $product;
     if ($product) {
         ?>
-        <p><?php echo esc_html($product->short_description); ?></p>
+        <p class="test"><?php echo esc_html($product->get_short_description()); ?></p>
         <?php
     }
 }
