@@ -183,6 +183,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 	require get_template_directory() . '/inc/menu-functions.php';
 	require get_template_directory() . '/inc/single-dish-functions.php';
+	require get_template_directory() . '/inc/variation-function.php';
 }
 
 /**
