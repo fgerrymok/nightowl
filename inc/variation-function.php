@@ -1,107 +1,116 @@
 <?php
-// Display custom options on the product page
-add_action('woocommerce_before_add_to_cart_button', function () {
-    echo '<div class="product-custom-options">';
-    echo '<h4>Custom Options</h4>';
 
-    // Option 1: Egg Style (Radio)
-    echo '<div class="product-option">';
-    echo '<h5>Egg Style</h5>';
-    echo '<label><input type="radio" name="egg_style" value="sunny_side_up"> Sunny Side Up</label><br>';
-    echo '<label><input type="radio" name="egg_style" value="hard_boiled"> Hard Boiled</label><br>';
-    echo '<label><input type="radio" name="egg_style" value="scrambled"> Scrambled</label>';
-    echo '</div>';
+// 1. Display custom options from ACF fields on the product page
+add_action('woocommerce_before_add_to_cart_button', 'display_variation');
 
-    // Option 2: Drink (Checkbox)
-    echo '<div class="product-option">';
-    echo '<h5>Drink (+ extra cost)</h5>';
-    echo '<label><input type="checkbox" name="drink[]" value="tea"> Tea (+$1)</label><br>';
-    echo '<label><input type="checkbox" name="drink[]" value="soda"> Soda (+$2)</label><br>';
-    echo '<label><input type="checkbox" name="drink[]" value="coffee"> Coffee (+$3)</label>';
-    echo '</div>';
+function display_variation() {
+    $product_id = get_the_ID();
+    $options = get_field('option_field', $product_id);
 
-    // Option 3: Add More (Checkbox)
-    echo '<div class="product-option">';
-    echo '<h5>Add More</h5>';
-    echo '<label><input type="checkbox" name="add_more[]" value="lettuce"> Lettuce</label><br>';
-    echo '<label><input type="checkbox" name="add_more[]" value="tomato"> Tomato</label><br>';
-    echo '<label><input type="checkbox" name="add_more[]" value="cheese"> Cheese (+$1)</label><br>';
-    echo '<label><input type="checkbox" name="add_more[]" value="ham"> Ham (+$2)</label>';
-    echo '</div>';
+    if ($options) {
+        echo '<div class="product-custom-options">';
 
-    echo '</div>';
-});
+        foreach ($options as $option) {
+            $header = $option['header'];
+            $option_list = $option['option_list'];
 
-// Pass custom option data to the cart
-add_filter('woocommerce_add_cart_item_data', function ($cart_item_data, $product_id) {
-    if (isset($_POST['egg_style'])) {
-        $cart_item_data['egg_style'] = sanitize_text_field($_POST['egg_style']);
+            if ($header && $option_list) {
+                // Retrieve the option type (e.g., Drink Options, Size) and other attributes
+                $option_type = $header['option_type'];
+                $limitation = $header['limitation']; // Single selection (Radio) or multiple (Checkbox)
+                $is_it_required = $header['is_it_required']; // Whether the option is required
+
+                // Display the option title
+                echo '<div class="product-option">';
+                echo '<h5>' . esc_html($option_type) . ($is_it_required ? ' (Required)' : '') . '</h5>';
+
+                // Loop through each option in the list and display as a radio/checkbox input
+                foreach ($option_list as $single_option) {
+                    $option_label = esc_html($single_option['single_option_name']);
+                    $option_price = number_format(floatval($single_option['single_option_price']), 2);
+
+                    // Set input type based on limitation (radio for single, checkbox for multiple)
+                    $input_type = ($limitation == 1) ? 'radio' : 'checkbox';
+                    $input_name = ($limitation == 1) ? esc_attr($option_type) : esc_attr($option_type) . '[]';
+
+                    echo '<label>';
+                    echo '<input type="' . $input_type . '" name="custom_options[' . esc_attr($option_type) . '][]" value="' . esc_attr($option_label . '|' . $option_price) . '">';
+                    echo $option_label . ' (+$' . $option_price . ')';
+                    echo '</label>';
+                }
+
+                echo '</div>';
+            }
+        }
+
+        echo '</div>';
     }
-    if (!empty($_POST['drink'])) {
-        $cart_item_data['drink'] = array_map('sanitize_text_field', $_POST['drink']);
-    }
-    if (!empty($_POST['add_more'])) {
-        $cart_item_data['add_more'] = array_map('sanitize_text_field', $_POST['add_more']);
-    }
-    return $cart_item_data;
-}, 10, 2);
+};
 
-// Display custom options in cart and checkout
-add_filter('woocommerce_get_item_data', function ($item_data, $cart_item) {
-    if (!empty($cart_item['egg_style'])) {
-        $item_data[] = ['name' => 'Egg Style', 'value' => ucfirst(str_replace('_', ' ', $cart_item['egg_style']))];
-    }
-    if (!empty($cart_item['drink'])) {
-        foreach ($cart_item['drink'] as $drink) {
-            $price = ($drink === 'tea' ? '+$1' : ($drink === 'soda' ? '+$2' : '+$3'));
-            $item_data[] = ['name' => ucfirst($drink), 'value' => $price];
+// 2. Add selected custom options to cart item data
+add_filter('woocommerce_add_cart_item_data', 'selected_custom_options', 10, 2);
+
+function selected_custom_options($cart_item_data, $product_id) {
+    if (!empty($_POST['custom_options'])) {
+        foreach ($_POST['custom_options'] as $option_type => $selected_options) {
+            if (is_array($selected_options)) {
+                foreach ($selected_options as $selected_option) {
+                    // Store selected options grouped by their type (option title)
+                    $cart_item_data['custom_options'][$option_type][] = sanitize_text_field($selected_option);
+                }
+            }
         }
     }
-    if (!empty($cart_item['add_more'])) {
-        foreach ($cart_item['add_more'] as $extra) {
-            $price = ($extra === 'cheese' ? '+$1' : ($extra === 'ham' ? '+$2' : 'Free'));
-            $item_data[] = ['name' => ucfirst($extra), 'value' => $price];
+    return $cart_item_data;
+};
+
+
+// 3. Display selected custom options in the cart and checkout pages
+add_filter('woocommerce_get_item_data', 'display_selected_custom_options_in_the_cart_checkout_page', 10, 2);
+
+function display_selected_custom_options_in_the_cart_checkout_page($item_data, $cart_item) {
+    if (!empty($cart_item['custom_options'])) {
+        foreach ($cart_item['custom_options'] as $option_type => $selected_values) {
+            $formatted_values = [];
+            foreach ($selected_values as $option_value) {
+                $option_parts = explode('|', $option_value); // Split option name and price
+                $formatted_values[] = $option_parts[0] . ' (+$' . $option_parts[1] . ')'; // Format for display
+            }
+            // Add the formatted values as a single line under the option title
+            $item_data[] = [
+                'name' => ucfirst(str_replace('_', ' ', $option_type)),
+                'value' => implode(', ', $formatted_values),
+            ];
         }
     }
     return $item_data;
-}, 10, 2);
+};
 
-// Adjust cart item prices based on selected options
-add_action('woocommerce_before_calculate_totals', function ($cart) {
+// 4. Add custom option prices to the cart total
+add_action('woocommerce_before_calculate_totals', 'add_custom_option_prices', 10, 1);
+
+function add_custom_option_prices($cart) {
+    // Avoid affecting admin area or AJAX calls
     if (is_admin() && !defined('DOING_AJAX')) {
         return;
     }
 
     foreach ($cart->get_cart() as $cart_item) {
-        $additional_price = 0;
+        if (!empty($cart_item['custom_options'])) {
+            $additional_price = 0;
 
-        // Calculate additional prices for drinks
-        if (!empty($cart_item['drink'])) {
-            foreach ($cart_item['drink'] as $drink) {
-                if ($drink === 'tea') {
-                    $additional_price += 1;
-                } elseif ($drink === 'soda') {
-                    $additional_price += 2;
-                } elseif ($drink === 'coffee') {
-                    $additional_price += 3;
+            foreach ($cart_item['custom_options'] as $selected_values) {
+                foreach ($selected_values as $option_value) {
+                    $option_parts = explode('|', $option_value); // Split option name and price
+                    $additional_price += floatval($option_parts[1]); // Add to total price
                 }
             }
-        }
 
-        // Calculate additional prices for extras
-        if (!empty($cart_item['add_more'])) {
-            foreach ($cart_item['add_more'] as $extra) {
-                if ($extra === 'cheese') {
-                    $additional_price += 1;
-                } elseif ($extra === 'ham') {
-                    $additional_price += 2;
-                }
+            // Add the additional price to the product's base price
+            if ($additional_price > 0) {
+                $cart_item['data']->set_price($cart_item['data']->get_price() + $additional_price);
             }
-        }
-
-        // Update the product price
-        if ($additional_price > 0) {
-            $cart_item['data']->set_price($cart_item['data']->get_price() + $additional_price);
         }
     }
-}, 10, 1);
+};
+?>
