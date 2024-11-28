@@ -12,7 +12,9 @@
   align-items: center;
   width: 100%;
   height: 52px;
+  background-color: #eee;
   border-bottom: 1px solid #ddd;
+  z-index: $z-index-mobile-header;
 }
 
 // === header left side === //
@@ -43,21 +45,40 @@
 // mobile bottom naviagtion
 
 #site-navigation-mobile {
-  background-color: #fff;
+  background-color: #eee;
   position: fixed;
   bottom: 0;
   display: flex;
   width: 100%;
   height: 56px;
+  z-index: $z-index-mobile-nav;
 }
 
-.menu-mobile-menu-container {
+#site-navigation-mobile ul {
   width: 100%;
-  ul {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    li {
-      text-decoration: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+// single icon
+#site-navigation-mobile ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    span {
+      font-size: 12px;
     }
   }
 }
