@@ -121,3 +121,6 @@ function display_dish_excerpt() {
     }
 }
 add_action('woocommerce_after_shop_loop_item_title', 'display_dish_excerpt', 20);
+
+// Remove Add to Cart Button from Shop Loop
+remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
