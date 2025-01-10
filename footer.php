@@ -15,13 +15,13 @@
 		<section class="site-info">
 			<div class="footer-site-map">
 				<div>
-					<h2>Delivery</h2>
+					<h2><?php echo esc_html("Delivery"); ?></h2>
 					<?php wp_nav_menu( array(
 						'menu' => 'footer-delivery'
 						) ); ?>
 				</div>
 				<div>
-					<h2>Site Navigation</h2>
+					<h2><?php echo esc_html("Site Navigation"); ?></h2>
 					<?php wp_nav_menu( array(
 					'menu' => 'footer-site-nav'
 					) ); ?>
@@ -29,16 +29,12 @@
 			</section>
 
 			<section class="footer-copyright">
-				<p>&copy; <?php echo date('Y');?> Credits:</p>
-				<a href="<?php echo esc_url("https://frazermok.com"); ?>" target="_blank">Frazer Mok,</a>
-				<a href="<?php echo esc_url("https://dongwonkang.info"); ?>" target="_blank">Dongwon Kang,</a>
-				<a href="<?php echo esc_url("https://keannabayaua.com/"); ?>" target="_blank">Keanna Bayaua,</a> & 
-				<a href="<?php echo esc_url("https://www.fatimanassari.com/"); ?>" target="_blank">Fatima Pournassari</a>
+				<p>Built By: <a href="<?php echo esc_url("https://wsstudio.ca/"); ?>" target="_blank"><?php echo esc_html("Whitespace Studio"); ?></a></p>
 			</section>
 
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+		</div>
+	</footer>
+</div>
 
 <?php wp_footer(); ?>
 
