@@ -150,6 +150,10 @@ function nightowlcafe_scripts() {
 	if ( is_product() ) {
 		wp_enqueue_script( 'menu-options-js', get_template_directory_uri() . '/js/menu-options.js', array(), '1.0.0', array('strategy' => 'defer') );
 	}
+
+	if ( is_page( 'info' ) ) {
+		wp_enqueue_script( 'copy-text', get_template_directory_uri(). '/js/copytext.js', array(), _S_VERSION, true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'nightowlcafe_scripts' );
 
