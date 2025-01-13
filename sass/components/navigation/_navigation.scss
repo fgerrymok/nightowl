@@ -1,109 +1,217 @@
 .main-navigation {
-	display: block;
-	width: 100%;
+  display: block;
 
-	ul {
-		display: none;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
 
-		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 100%;
-			left: -999em;
-			z-index: 99999;
+    ul {
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      float: left;
+      position: absolute;
+      top: 100%;
+      left: -999em;
+      z-index: 99999;
 
-			ul {
-				left: -999em;
-				top: 0;
-			}
+      ul {
+        left: -999em;
+        top: 0;
+      }
 
-			li {
+      li {
+        &:hover > ul,
+        &.focus > ul {
+          display: block;
+          left: auto;
+        }
+      }
 
-				&:hover > ul,
-				&.focus > ul {
-					display: block;
-					left: auto;
-				}
-			}
+      a {
+        width: 120px;
+      }
 
-			a {
-				width: 200px;
-			}
+      :hover > a,
+      .focus > a {
+      }
 
-			:hover > a,
-			.focus > a {
-			}
+      a:hover,
+      a.focus {
+      }
+    }
 
-			a:hover,
-			a.focus {
-			}
-		}
+    li:hover > ul,
+    li.focus > ul {
+      left: -10px;
+      background-color: $color_header_bg;
+    }
+  }
 
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
-		}
-	}
+  li {
+    position: relative;
 
-	li {
-		position: relative;
+    &:hover > a,
+    &.focus > a {
+    }
+  }
 
-		&:hover > a,
-		&.focus > a {
-		}
-	}
+  a {
+    display: block;
+    text-decoration: none;
+  }
 
-	a {
-		display: block;
-		text-decoration: none;
-	}
-
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
-	}
+  .current_page_item > a,
+  .current-menu-item > a,
+  .current_page_ancestor > a,
+  .current-menu-ancestor > a {
+  }
 }
 
 /* Small menu. */
 .menu-toggle,
 .main-navigation.toggled ul {
-	display: block;
-}
-
-@media screen and (min-width: 37.5em) {
-
-	.menu-toggle {
-		display: none;
-	}
-
-	.main-navigation ul {
-		display: flex;
-	}
+  display: block;
 }
 
 .comment-navigation,
 .posts-navigation,
 .post-navigation {
+  .site-main & {
+    margin: 0 0 1.5em;
+  }
 
-	.site-main & {
-		margin: 0 0 1.5em;
-	}
+  .nav-links {
+    display: flex;
+  }
 
-	.nav-links {
-		display: flex;
-	}
+  .nav-previous {
+    flex: 1 0 50%;
+  }
 
-	.nav-previous {
-		flex: 1 0 50%;
-	}
+  .nav-next {
+    text-align: end;
+    flex: 1 0 50%;
+  }
+}
 
-	.nav-next {
-		text-align: end;
-		flex: 1 0 50%;
-	}
+// NOC custom
+.site-header {
+  background-color: $color_header_bg;
+  width: 100%;
+}
+.site-header-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  font-size: 12px;
+  font-family: "Bodoni-72-bold";
+}
+
+.site-branding {
+  padding: 16px;
+  a {
+    display: block;
+  }
+  img {
+    display: block;
+    width: 100px;
+    height: 100%;
+  }
+}
+
+.main-navigation {
+  margin: auto 8px auto 0;
+
+  // menu
+  ul {
+    display: flex;
+  }
+  li {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  li a {
+    padding: 10px;
+  }
+
+  //   seperate line
+  ul > li::after {
+    content: "|";
+    float: right;
+    display: block;
+    margin: auto;
+  }
+
+  ul > li:last-child::after {
+    content: "";
+  }
+
+  // sub menu
+  .sub-menu {
+    flex-direction: column;
+  }
+  .sub-menu > li::after {
+    content: none !important;
+  }
+}
+
+//   phone number
+.site-header-content .site-phone-number {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  padding-right: 16px;
+  svg {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+  .phone-number {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (min-width: 380px) {
+  .site-header-content .site-phone-number {
+    display: flex;
+  }
+}
+@media (min-width: $breakpoint-mobile-lrg) {
+  .site-header-content {
+    font-size: 14px;
+  }
+  .main-navigation {
+    margin: auto 0 auto 0;
+  }
+  .site-header-content .site-phone-number {
+    svg {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 480px) {
+  .main-navigation {
+    ul li a {
+      padding: 16px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .site-header-content {
+    font-size: 16px;
+    padding: 0 72px;
+  }
+  .main-navigation {
+    ul li a {
+      padding: 16px 20px;
+    }
+  }
 }
