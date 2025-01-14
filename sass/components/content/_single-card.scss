@@ -2,7 +2,11 @@
   list-style-type: none;
   margin: 16px;
   padding: 0;
-  .single-category-wrapper {
+
+  h2 {
+    margin: 32px 0 8px 0;
+  }
+  .single-category-container {
     display: flex;
     gap: 12px;
     overflow-x: auto;
@@ -34,6 +38,19 @@
       }
       .price {
         order: 2;
+      }
+    }
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .menu-items {
+    li {
+      a {
+        width: 200px;
+        img {
+          height: 160px;
+        }
       }
     }
   }
