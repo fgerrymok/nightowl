@@ -1,0 +1,64 @@
+.site-footer{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 1rem 0;
+    a{
+        color: white;
+        text-decoration: none;
+        font-weight: 300;
+    }
+    p{
+        font-size: 16px;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+    .nightowl-info{
+        margin-bottom: 1.5rem;
+        h3{
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        address{
+            font-style: normal;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        a{
+            font-size: 14px;
+        }
+        .footer-phone-number{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.2rem;
+            svg{
+                height: 0.9rem;
+                width: 0.9rem;
+            }
+        }
+    }
+    .site-info{
+        ul{
+            list-style: none;
+            margin-left: 0;
+            padding-left: 0;
+            li{
+                width: 100%;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .footer-copyright{
+        p{
+            font-size: 14px;
+            a{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+@import 'footer-desktop.scss';
