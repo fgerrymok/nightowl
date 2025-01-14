@@ -100,8 +100,8 @@
   }
 })();
 
-// disable menu
 document.addEventListener("DOMContentLoaded", () => {
+  // disable menu
   const menuOntheNav = document.querySelector(".custom-menu-disable");
 
   if (menuOntheNav) {
@@ -109,4 +109,17 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
     });
   }
+
+  // enable for sub-menu
+  const subMenu = document.querySelectorAll(".sub-menu .menu-item");
+  subMenu.forEach((menu) => {
+    menu.addEventListener("click", () => {
+      // Find the link inside the button
+      const link = menu.querySelector("a");
+      if (link) {
+        // Redirect to the link's href
+        window.location.href = link.href;
+      }
+    });
+  });
 });
