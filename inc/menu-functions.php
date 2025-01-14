@@ -25,10 +25,12 @@ remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30
 
 			if ($heroHeading && $heroDescription && $heroImage) {
 				?>
-                <div class='hero-wrapper'>
-                    <div class='hero-info-wrapper'>
-                        <h1><?php echo esc_html($heroHeading); ?></h1>
-                        <p><?php echo esc_html($heroDescription); ?></p>
+                <div class="noc-hero-section">
+                    <div class='hero-wrapper'>
+                        <div class='hero-info-wrapper'>
+                            <h1><?php echo esc_html($heroHeading); ?></h1>
+                            <p><?php echo esc_html($heroDescription); ?></p>
+                        </div>
                         <div class="hero-image-wrapper">
                             <div class="hero-overlay"></div>
                             <?php
