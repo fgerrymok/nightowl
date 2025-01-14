@@ -218,3 +218,5 @@ function set_theme_timezone() {
     date_default_timezone_set('America/Vancouver');
 }
 add_action('init', 'set_theme_timezone');
+
+

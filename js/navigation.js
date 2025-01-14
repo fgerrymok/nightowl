@@ -100,9 +100,10 @@
   }
 })();
 
-// prevent menu event
+// disable menu
 document.addEventListener("DOMContentLoaded", () => {
-  const menuOntheNav = document.querySelector(".custom-menu-disable > a");
+  const menuOntheNav = document.querySelector(".custom-menu-disable");
+
   if (menuOntheNav) {
     menuOntheNav.addEventListener("click", (e) => {
       e.preventDefault();
