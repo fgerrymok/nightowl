@@ -44,6 +44,13 @@
   }
 }
 
+.menu-items li:hover {
+  img {
+    transform: scale(1.03);
+    transition: all 0.3s ease;
+  }
+}
+
 @media (min-width: $breakpoint-tablet) {
   .menu-items {
     li {

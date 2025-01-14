@@ -220,3 +220,11 @@ function set_theme_timezone() {
 add_action('init', 'set_theme_timezone');
 
 
+// 
+add_filter('woocommerce_get_image_size_thumbnail', function($size) {
+    return array(
+        'width'  => 300, 
+        'height' => 300, 
+        'crop'   => 0,   
+    );
+});
