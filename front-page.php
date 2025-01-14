@@ -26,9 +26,8 @@
                         the_row();
                         $hero_heading     = get_sub_field('hero_heading');
                         $hero_description = get_sub_field('hero_short_description');
-                        $hero_cta_btn     = get_sub_field('cta_button_link');
                         $hero_image       = get_sub_field('hero_image');
-                        $image_size       = 'large';    
+                        $image_size       = 'large';
                     ?>
                     <div class='hero-wrapper'>
                         <div class='hero-info-wrapper'>
@@ -43,16 +42,28 @@
                             <?php endif; ?>
 
                             <!-- Hero CTA Button -->
-                            <?php if($hero_cta_btn): ?>
-                                <a href='<?php echo esc_url($hero_cta_btn); ?>'>View Our Menu</a>
-                            <?php endif; ?>
+							<?php
+							$current_hour = date("H");
+							if ($current_hour < 12 ) {
+								$category_slug = "breakfast";
+							} else {
+								$category_slug = "lunch";
+							}
+							
+							$category = get_term_by('slug', $category_slug, 'product_cat');
+							$menu_link = get_term_link($category);
+							?>
+							<a href='<?php echo esc_url($menu_link); ?>'>View Our Menu</a>
                         </div>
 
                         <!-- Hero Image -->
-                        <?php if($hero_image):
-                                echo wp_get_attachment_image($hero_image, $image_size);
-                            endif;
-                        ?>
+						<div class="hero-image-wrapper">
+							<div class="hero-overlay"></div>
+							<?php if($hero_image):
+									echo wp_get_attachment_image($hero_image, $image_size);
+								endif;
+							?>
+						</div>
                     </div>
                     <?php endwhile;
                     
