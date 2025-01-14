@@ -57,10 +57,13 @@
                         </div>
 
                         <!-- Hero Image -->
-                        <?php if($hero_image):
-                                echo wp_get_attachment_image($hero_image, $image_size);
-                            endif;
-                        ?>
+						<div class="hero-image-wrapper">
+							<div class="hero-overlay"></div>
+							<?php if($hero_image):
+									echo wp_get_attachment_image($hero_image, $image_size);
+								endif;
+							?>
+						</div>
                     </div>
                     <?php endwhile;
                     

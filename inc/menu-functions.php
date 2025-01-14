@@ -25,10 +25,19 @@ remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30
 
 			if ($heroHeading && $heroDescription && $heroImage) {
 				?>
-				<h1><?php echo esc_html($heroHeading); ?></h1>
-				<p><?php echo esc_html($heroDescription); ?></p>
-				<?php
-				echo wp_get_attachment_image($heroImage, 'full');
+                <div class='hero-wrapper'>
+                    <div class='hero-info-wrapper'>
+                        <h1><?php echo esc_html($heroHeading); ?></h1>
+                        <p><?php echo esc_html($heroDescription); ?></p>
+                        <div class="hero-image-wrapper">
+                            <div class="hero-overlay"></div>
+                            <?php
+                            echo wp_get_attachment_image($heroImage, 'full');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            <?php
 			}
 		}
 	}
