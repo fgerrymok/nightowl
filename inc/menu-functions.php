@@ -89,7 +89,9 @@ function output_menu_titles_and_items() {
         foreach($terms as $term) {
             if ($term && !is_wp_error($term)) {
                 ?>
-                <h2><?php echo esc_html($term->name); ?></h2>
+                <div class="single-category-wrapper">
+                    <h2><?php echo esc_html($term->name); ?></h2>
+                    <div class="single-category-container">
                 <?php
         
                 $args = array(
@@ -113,6 +115,8 @@ function output_menu_titles_and_items() {
                     }
                 }
                 wp_reset_postdata();
+                    echo "</div>";
+                echo "</div>";
             }
         }
         ?>
@@ -127,7 +131,7 @@ function display_dish_excerpt() {
     global $product;
     if ($product) {
         ?>
-        <p class="test"><?php echo esc_html($product->get_short_description()); ?></p>
+        <p class="text"><?php echo esc_html($product->get_short_description()); ?></p>
         <?php
     }
 }
