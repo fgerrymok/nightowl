@@ -116,22 +116,25 @@
                         $label_doorDash  = get_sub_field('cta_label_for_doordash');
                         $button_doorDash = get_sub_field('cta_button_for_doordash');
             ?>
-                <h2>
+
+                <img src="<?php echo get_template_directory_uri();?>/assets/noc-banner.jpeg" alt="Night Owl Cafe Banner">
+                <div class=banner-overlay></div>
+                <div class="order-section-content">
                     <!-- Order Now Heading -->
                     <?php if($order_heading): ?>
-                                <h1><?php echo esc_html($order_heading); ?></h1>
+                        <p class="order-now-heading"><?php echo esc_html($order_heading); ?></p>
                     <?php endif; ?>
-                </h2>
-
-                   <!-- UberEats CTA Button -->
-                   <?php if($label_uberEats && $button_uberEats): ?>
-                                <a href='<?php echo esc_url($button_uberEats); ?>'><?php echo esc_html($label_uberEats); ?></a>
-                   <?php endif; ?>
-
+    
+                    <!-- UberEats CTA Button -->
+                    <?php if($label_uberEats && $button_uberEats): ?>
+                        <a href='<?php echo esc_url($button_uberEats); ?>'><?php echo esc_html($label_uberEats); ?></a>
+                    <?php endif; ?>
+    
                     <!-- DoorDash CTA Button -->
                     <?php if($label_doorDash && $button_doorDash): ?>
-                                <a href='<?php echo esc_url($button_doorDash); ?>'><?php echo esc_html($label_doorDash); ?></a>
-                   <?php endif; ?>
+                        <a href='<?php echo esc_url($button_doorDash); ?>'><?php echo esc_html($label_doorDash); ?></a>
+                    <?php endif; ?>
+                </div>
             <?php endwhile; ?>
             <?php
                 }
