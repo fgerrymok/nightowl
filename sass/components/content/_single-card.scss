@@ -12,6 +12,7 @@
     overflow-x: auto;
   }
   li {
+    padding-bottom: 16px;
     a {
       display: flex;
       flex-direction: column;
@@ -54,4 +55,24 @@
       }
     }
   }
+}
+
+// scroll bar design
+.single-category-container {
+  &::-webkit-scrollbar {
+    height: 4px;
+    width: 80px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #4e4e4e; // scroll bar color
+    border-radius: 0;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: #4e4e4e transparent;
 }
