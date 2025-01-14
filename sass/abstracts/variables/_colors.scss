@@ -8,7 +8,7 @@ $color_accent: #82ff69;
 
 // default setting
 
-$color__background-body: #fff;
+$color__background-body: $color_bg;
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
@@ -21,7 +21,7 @@ $color__text-input-focus: #111;
 $color__link: $color_header_text;
 $color__link-visited: $color_header_text;
 $color__link-hover: #191970; //midnightblue
-$color__text-main: #404040;
+$color__text-main: $color_main;
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;

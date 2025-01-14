@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main page-info">
 
 		<?php
 		while ( have_posts() ) {
@@ -36,25 +36,36 @@ get_header();
 					
 
 					// business time table
-					if ( have_rows( 'business_hours_timetable' ) ) { ?>
+					if ( have_rows( 'business_hours_timetable' ) ) { 
+						$current_day = date('l');
+						
+						?>
 						<table>
-						<tr>
-							<th>Day</th>
-							<th>Opening Time</th>
-							<th>Closing Time</th>
-						</tr>
 
-						<!-- day of week in a row -->
-						<?php while ( have_rows( 'business_hours_timetable' ) ) {
-							the_row(); ?>
-							
-							<tr>
-								<td><?php echo esc_html( get_sub_field( 'day_of_week' ) );?></td>
-								<td><?php echo esc_html( get_sub_field( 'opening_time' ) );?></td>
-								<td><?php echo esc_html( get_sub_field( 'closing_time' ) );?></td>
-							</tr>
+							<!-- day of week in a row -->
+							<?php while ( have_rows( 'business_hours_timetable' ) ) { the_row(); 
+								
+								 
+								if ( get_sub_field( 'day_of_week' ) == $current_day ) {
+									$isToday = true;
+								} else {
+									$isToday = false;
+								}
+								
+								
+								?>
+								
+								<tr class="<?php echo $isToday ? esc_html( 'business-hour-today' ) : ""; ?>">
+									<td><?php 
+										echo esc_html( get_sub_field( 'day_of_week' ) ); 
+										echo $isToday ? ' (Today)' : '';
+										?>
+									</td>
+									<td class='hours <?php echo get_sub_field( 'opening_time' ) ? 'open-time' : 'close-day'; ?>'><?php echo get_sub_field( 'opening_time' ) ? esc_html( get_sub_field( 'opening_time' ) ) : "Closed";?></td>
+									<td class='hours close-time'><?php echo get_sub_field( 'closing_time' ) ? esc_html( get_sub_field( 'closing_time' ) ) : "";?></td>
+								</tr>
 
-						<?php } ?>
+							<?php } ?>
 					
 						</table>
 					<?php
@@ -85,11 +96,19 @@ get_header();
 					the_row();
 
 					echo "<h2 class='section-heading'>" . esc_html( get_sub_field( 'section_heading' ) ) . "</h2>";
-					echo "<p class='address'>" . esc_html( get_sub_field( 'address' ) ) . "</p>";
+					echo "<div class='address-wrapper'>";
+					echo 	"<button class='address' id='copy-address'>" . esc_html( get_sub_field( 'address' ) ) . "</button>";
+					echo 	"<div id='copy-popup'>Copied!</div>";
+					echo "</div>"
+					?>
 
+					<!-- Map Image -->
+					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/map.jpg' ); ?>" alt="Restaurant Location" class="map-image" />
+
+					<?php
 					// Google Map ACF
-					$location = get_sub_field( 'map' );
-					if( $location ) { ?>
+					// $location = get_sub_field( 'map' );
+					if( isset( $location ) ) { ?>
 
 						<div id="map" style="width: 100%; height: 400px;"></div>
 						<script>
@@ -114,9 +133,11 @@ get_header();
 							src="https://maps.googleapis.com/maps/api/js?key=<?php echo $google_api_key; ?>&callback=initMap">
 						</script>
 				
-					<?php // ====== Google Map ACF end ====== // 
-				
-					}
+					<?php 
+					} // ====== Google Map ACF end ====== // 
+					?>
+					<a href="https://maps.app.goo.gl/fmQWVpbEuJEkWJP48" target="_blank" class="map-link">Get the location</a>
+				<?php
 				}
 				echo "</section>";
 			}
