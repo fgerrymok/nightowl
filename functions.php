@@ -234,3 +234,18 @@ add_filter('woocommerce_get_image_size_thumbnail', function($size) {
         'crop'   => 0,   
     );
 });
+
+// Disable Block Editor
+function disable_block_editor_except_pages($can_edit, $post_type) {
+
+	$id = '';
+
+	if ( get_the_ID() === $id ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+add_filter('use_block_editor_for_post', 'disable_block_editor_except_pages', 10, 2);
+add_filter('gutenberg_can_edit_post_type', 'disable_block_editor_except_pages', 10, 2);
