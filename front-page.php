@@ -104,6 +104,8 @@
             </article>
         </section>
 
+        <div class="test"></div>
+
         <!-- Order Now Section -->
         <section class='noc-order-section home-section'>
             <?php
