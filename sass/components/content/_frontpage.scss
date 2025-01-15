@@ -33,7 +33,23 @@
             min-width: 33%;
             width: 6rem;
             height: fit-content;
+
+            img {
+                transition: transform 0.1s;
+            }
         }
+
+        // .spin {
+        //     animation: spin 4s linear infinite;
+        // }
+        // @keyframes spin {
+        //     from {
+        //         transform: rotate(0deg);
+        //     }
+        //     to {
+        //         transform: rotate(360deg);
+        //     }
+        // }
 
         .item-info {
             padding: 1rem;
