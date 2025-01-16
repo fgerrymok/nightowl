@@ -74,7 +74,9 @@
         <section class='noc-featured-section home-section'>
             <h2>Discover Our Menu</h2>
             <article class='noc-featured-item item-1'>
-                <img src="<?php echo get_template_directory_uri();?>/assets/hearty-combo.png" alt="Hearty Combo Breakfast">
+                <div class="item-img">
+                    <img src="<?php echo get_template_directory_uri();?>/assets/hearty-combo.png" alt="Hearty Combo Breakfast">    
+                </div>
                 <div class='item-info'>
                     <h3>Hearty Morning Combo</h3>
                     <p>A hearty breakfast platter featuring your choice of steak, buttered toast, two sides, and a variety of delicious options to start your day right.</p>
@@ -86,17 +88,23 @@
                     <h3>Meat Lover's Steak Combo</h3>
                     <p>A hearty combination of tender beef steak, juicy pork chop steak, jumbo cheese sausage, crispy bacon, and a perfectly cooked egg for a satisfying, protein-packed meal.</p>
                 </div>
-                <img src="<?php echo get_template_directory_uri();?>/assets/steak-combo.jpg" alt="Steak Combo">
+                <div class="item-img">
+                    <img src="<?php echo get_template_directory_uri();?>/assets/hearty-combo.png" alt="Hearty Combo Breakfast">
+                </div>
             </article>
 
             <article class='noc-featured-item item-3'>
-                <img src="<?php echo get_template_directory_uri();?>/assets/satay-beef-soup.jpg" alt="Satay Beef Soup Noodle">
+                <div class="item-img">
+                    <img src="<?php echo get_template_directory_uri();?>/assets/hearty-combo.png" alt="Hearty Combo Breakfast">
+                </div>
                 <div class='item-info'>
                     <h3>Satay Beef Soup Noodle</h3>
                     <p>A flavourful noodle soup with tender beef and a rich, aromatic satay broth, offering a perfect blend of spices.</p>
                 </div>
             </article>
         </section>
+
+        <div class="test"></div>
 
         <!-- Order Now Section -->
         <section class='noc-order-section home-section'>
@@ -110,22 +118,25 @@
                         $label_doorDash  = get_sub_field('cta_label_for_doordash');
                         $button_doorDash = get_sub_field('cta_button_for_doordash');
             ?>
-                <h2>
+
+                <img src="<?php echo get_template_directory_uri();?>/assets/noc-banner.jpeg" alt="Night Owl Cafe Banner">
+                <div class=banner-overlay></div>
+                <div class="order-section-content">
                     <!-- Order Now Heading -->
                     <?php if($order_heading): ?>
-                                <h1><?php echo esc_html($order_heading); ?></h1>
+                        <p class="order-now-heading"><?php echo esc_html($order_heading); ?></p>
                     <?php endif; ?>
-                </h2>
-
-                   <!-- UberEats CTA Button -->
-                   <?php if($label_uberEats && $button_uberEats): ?>
-                                <a href='<?php echo esc_url($button_uberEats); ?>'><?php echo esc_html($label_uberEats); ?></a>
-                   <?php endif; ?>
-
+    
+                    <!-- UberEats CTA Button -->
+                    <?php if($label_uberEats && $button_uberEats): ?>
+                        <a href='<?php echo esc_url($button_uberEats); ?>'><?php echo esc_html($label_uberEats); ?></a>
+                    <?php endif; ?>
+    
                     <!-- DoorDash CTA Button -->
                     <?php if($label_doorDash && $button_doorDash): ?>
-                                <a href='<?php echo esc_url($button_doorDash); ?>'><?php echo esc_html($label_doorDash); ?></a>
-                   <?php endif; ?>
+                        <a href='<?php echo esc_url($button_doorDash); ?>'><?php echo esc_html($label_doorDash); ?></a>
+                    <?php endif; ?>
+                </div>
             <?php endwhile; ?>
             <?php
                 }

@@ -44,6 +44,13 @@
   }
 }
 
+.menu-items li:hover {
+  img {
+    transform: scale(1.03);
+    transition: all 0.3s ease;
+  }
+}
+
 @media (min-width: $breakpoint-tablet) {
   .menu-items {
     li {
@@ -59,20 +66,16 @@
 
 // scroll bar design
 .single-category-container {
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
   &::-webkit-scrollbar {
-    height: 4px;
-    width: 80px;
+    height: 2px;
   }
-
   &::-webkit-scrollbar-track {
     background: transparent;
   }
-
   &::-webkit-scrollbar-thumb {
-    background-color: #4e4e4e; // scroll bar color
+    background-color: #333; // scroll bar color
     border-radius: 0;
   }
-
-  scrollbar-width: thin;
-  scrollbar-color: #4e4e4e transparent;
 }
