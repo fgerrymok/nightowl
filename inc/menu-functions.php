@@ -56,19 +56,37 @@ function output_menu_subnavigation() {
                 'hide_empty' => false,
             ));
         
-        if ($terms && !is_wp_error($terms)) {
-            ?>
-            <ul class="menu-subnav">
-            <?php
-            foreach($terms as $term) {
+            if ($terms && !is_wp_error($terms)) {
                 ?>
-                <li><?php echo esc_html($term->name); ?></li>
+                <div class='all-menus-wrapper'>
+                <div class='sidebar-menu-wrapper'>
+                        <svg class='sidebar-menu-button' clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
+                        <ul class="menu-subnav sidebar-menu-nav">
+                        <?php
+                        foreach($terms as $term) {
+                            ?>
+                            <li class='sidebar-menu-item' data-term="<?php echo esc_attr($term->slug); ?>"><?php echo esc_html($term->name); ?></li>
+                            <?php
+                        }
+                        ?>
+                        </ul>
+                    </div>
+                    <div class='top-menu-wrapper'>
+                        <ul class="menu-subnav top-menu-nav">
+                        <?php
+                        foreach($terms as $term) {
+                            ?>
+                            <li class='top-menu-item' data-term="<?php echo esc_attr($term->slug); ?>"><?php echo esc_html($term->name); ?></li>
+                            <?php
+                        }
+                        ?>
+                        </ul>
+                        <div class="tab-indicator"></div>
+                    </div>
+                </div>
                 <?php
             }
-            ?>
-            </ul>
-            <?php
-        }
+            
     }
 }
 add_action('woocommerce_before_shop_loop','output_menu_subnavigation',21);
@@ -89,7 +107,7 @@ function output_menu_titles_and_items() {
         foreach($terms as $term) {
             if ($term && !is_wp_error($term)) {
                 ?>
-                <div class="single-category-wrapper">
+                <div class="single-category-wrapper" data-term="<?php echo esc_attr($term->slug); ?>">
                     <h2><?php echo esc_html($term->name); ?></h2>
                     <div class="single-category-container">
                 <?php
