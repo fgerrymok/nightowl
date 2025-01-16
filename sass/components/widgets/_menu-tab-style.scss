@@ -1,0 +1,89 @@
+.menu-items{
+    position: relative;
+}
+
+.all-menus-wrapper{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .menu-subnav {
+        list-style: none;
+    }
+    
+    .top-menu-wrapper{
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        .top-menu-nav{
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            overflow-x: scroll;
+            margin-bottom: 0;
+            margin-left: 0;
+            color: #999;
+            .active{
+                color: White;
+            }
+            li{
+                width: auto;
+                min-width: fit-content;
+            }
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .tab-indicator{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background-color: white;
+            transition: left 0.3s ease, width 0.3s ease; /* Smooth transitions */
+        }
+    }
+    
+    
+    .sidebar-menu-wrapper{
+        height: 1.85rem;
+        .sidebar-menu-nav{
+            padding: 1rem 2rem;
+            margin: 0;
+            width: 100vw;
+            background-color: white;
+            color: #666;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            display: flex;
+            max-height: 40vh;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            flex-direction: column;
+            .side-active{
+                color: Black;
+            }
+            li{
+                margin-bottom: 1rem;
+                position: relative;
+            }
+        }
+
+        .sidebar-menu-button{
+            width: 2rem;
+            height: 2rem;
+            padding: 0.3rem;
+            fill: white;
+        }
+
+    }
+}
