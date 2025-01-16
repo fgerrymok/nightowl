@@ -143,9 +143,28 @@ function nightowlcafe_scripts() {
 
 	wp_enqueue_script( 'nightowlcafe-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
+	wp_enqueue_script( 'menu-card', get_template_directory_uri() . '/js/menu-card.js', array(), _S_VERSION, true );
+	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	if ( is_product() ) {
+		wp_enqueue_script( 'menu-options-js', get_template_directory_uri() . '/js/menu-options.js', array(), '1.0.0', array('strategy' => 'defer') );
+	}
+
+	// copy text
+	if ( is_page( 'info' ) ) {
+		wp_enqueue_script( 'copy-text', get_template_directory_uri(). '/js/copytext.js', array(), _S_VERSION, true );
+	}
+
+	if (is_front_page()) {
+		wp_enqueue_script( 'spin-on-scroll', get_template_directory_uri(). '/js/spin-on-scroll.js', array(), _S_VERSION, true );
+	}
+
+	// FAB    
+	wp_enqueue_script('fab-script', get_template_directory_uri() . '/js/fab-script.js', array(), '1.0.0', array('strategy' => 'defer') );
+
 }
 add_action( 'wp_enqueue_scripts', 'nightowlcafe_scripts' );
 
@@ -181,4 +200,52 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
+	require get_template_directory() . '/inc/menu-functions.php';
+	require get_template_directory() . '/inc/single-dish-functions.php';
 }
+
+/**
+ * Custom Post Types and Taxonomies.
+ */
+require get_template_directory() . '/inc/cpt-taxonomy.php';
+
+
+// test API key for ACF Google MAP
+
+function my_acf_init() {
+    
+    acf_update_setting('google_api_key', 'ADD GOOGLE API KEY LATER');
+}
+
+add_action('acf/init', 'my_acf_init');
+
+// Set timezone to Vancouver
+function set_theme_timezone() {
+    date_default_timezone_set('America/Vancouver');
+}
+add_action('init', 'set_theme_timezone');
+
+
+// 
+add_filter('woocommerce_get_image_size_thumbnail', function($size) {
+    return array(
+        'width'  => 300, 
+        'height' => 300, 
+        'crop'   => 0,   
+    );
+});
+
+// Disable Block Editor
+function disable_block_editor_except_pages($can_edit, $post_type) {
+
+	$id = '';
+
+	if ( get_the_ID() === $id ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+add_filter('use_block_editor_for_post', 'disable_block_editor_except_pages', 10, 2);
+add_filter('gutenberg_can_edit_post_type', 'disable_block_editor_except_pages', 10, 2);

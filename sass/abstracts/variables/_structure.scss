@@ -1,2 +1,12 @@
 $size__site-main: 100%;
 $size__site-sidebar: 25%;
+
+// breakpoint
+$breakpoint-mobile: 20em; // 320px
+$breakpoint-mobile-md: 25em; // 400px
+$breakpoint-mobile-lrg: 26.875em; // 430px
+$breakpoint-tablet: 48em; // 768px
+$breakpoint-desktop: 64em; // 1024px
+$breakpoint-desktop-lrg: 80em; // 1280px
+
+$max-width: 75em; // 1200px

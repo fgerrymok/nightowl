@@ -2,9 +2,18 @@
 --------------------------------------------- */
 @import "navigation/navigation";
 
+/* Footer
+--------------------------------------------- */
+@import "navigation/footer";
+
 /* Posts and pages
 --------------------------------------------- */
 @import "content/posts-and-pages";
+
+/* Other Contents
+--------------------------------------------- */
+@import "content/page-info";
+@import "content/single-card";
 
 /* Comments
 --------------------------------------------- */
@@ -13,6 +22,7 @@
 /* Widgets
 --------------------------------------------- */
 @import "widgets/widgets";
+@import "widgets/fab-style";
 
 /* Media
 --------------------------------------------- */
@@ -25,3 +35,19 @@
 /* Galleries
 --------------------------------------------- */
 @import "media/galleries";
+
+/* Menu
+--------------------------------------------- */
+@import "components/content/menu";
+
+/* Single Dish
+--------------------------------------------- */
+@import "components/content/single-dish";
+
+/* Hero Section
+--------------------------------------------- */
+@import "components/sections/hero";
+
+/* Hero Section
+--------------------------------------------- */
+@import "components/content/frontpage";

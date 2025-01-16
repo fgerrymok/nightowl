@@ -1,0 +1,28 @@
+@media(min-width:45em){
+    .site-footer{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: auto;
+
+        .nightowl-info{
+            justify-self: end;
+            text-align: left;
+            margin-right: 5rem;
+
+            .footer-phone-number{
+                justify-content: flex-start;
+            }
+        }
+
+        .site-info{
+            display: flex;
+            gap: 5rem;
+            text-align: left;
+        }
+
+        .footer-copyright{
+            grid-column: 1/-1;
+            grid-row: 2/3;
+        }
+    }
+}

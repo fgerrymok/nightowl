@@ -1,0 +1,89 @@
+// Hero
+
+.noc-hero-section {
+
+    .hero-wrapper {
+        position: relative;
+
+        .hero-image-wrapper {
+            position: relative;
+            height: 20rem;
+            
+            img {
+                height: 20rem !important;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .hero-overlay {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                pointer-events: none;
+            }
+        }
+
+        .hero-info-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            padding: 1rem;
+            height: 100%;
+            width: 20rem;
+            
+            h1 {
+                color: #fff !important;
+                text-align: center;
+                margin: 0;
+                margin-top: 1rem;
+            }
+
+            p {
+                color: #fff !important;
+            }
+
+            a {
+                color: #000;
+                background-color: $color_main;
+                text-decoration: none;
+                border: 1px solid $color_main;
+                border-radius: 4px;
+                padding: 0.3rem 0.6rem;
+            }
+
+            a:hover, a:focus, a:active {
+                background-color: $color_header_bg;
+            }
+        }
+    }
+
+    @media(min-width: $breakpoint-tablet) {
+        .hero-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+
+            .hero-info-wrapper {
+                position: static;
+                transform: unset;
+
+                h1, p {
+                    color: $color_bg;
+                }
+            }
+
+            .hero-image-wrapper {
+
+                .hero-overlay {
+                    display: none;
+                }
+            }
+        }
+    }
+}

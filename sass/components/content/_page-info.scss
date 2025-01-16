@@ -1,0 +1,115 @@
+.site-main.page-info {
+  margin: 16px;
+  margin-bottom: 80px;
+}
+
+.site-main.page-info .entry-header {
+  position: absolute;
+  top: 100%;
+  left: -999em;
+  z-index: 99999;
+}
+
+.site-main.page-info section {
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+.business-hours-section {
+  table {
+    tbody {
+      td {
+        padding: 8px 0;
+      }
+
+      .business-hour-today {
+        font-weight: bold;
+        color: $color_accent;
+      }
+      .open-time {
+        display: flex;
+      }
+      .open-time::after {
+        content: "-";
+        float: right;
+        display: block;
+        margin: auto;
+      }
+    }
+  }
+}
+
+.location-section {
+  display: flex;
+  flex-direction: column;
+
+  .address-wrapper {
+    position: relative;
+  }
+  .address {
+    border: none;
+    text-align: left;
+    background: transparent;
+    color: $color_main;
+    padding: 0;
+    margin: 16px 0;
+    cursor: pointer;
+  }
+  .map-image {
+    height: 400px;
+    object-fit: cover;
+  }
+  .map-link {
+    padding: 16px;
+    margin: 16px 0;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: $color_main;
+  }
+}
+
+#copy-popup {
+  position: absolute;
+  top: -16px;
+  background-color: green;
+  color: white;
+  padding: 4px 12px;
+  margin: 0;
+  text-align: center;
+  width: 60px;
+  border-radius: 3px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+@media (min-width: $breakpoint-desktop-lrg) {
+  .site-main.page-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: $max-width;
+    margin: auto;
+    margin-bottom: 80px;
+    article {
+      grid-column: span 2;
+      margin: 0;
+    }
+    section {
+      margin: 0;
+    }
+    .contact-us-section {
+      order: 2;
+    }
+    .location-section {
+      grid-row: span 2;
+    }
+  }
+}

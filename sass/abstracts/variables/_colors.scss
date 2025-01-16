@@ -1,4 +1,14 @@
-$color__background-body: #fff;
+// NOC COLOR
+$color_bg: #1c1c1c;
+$color_header_bg: #EFEBDA;
+$color_header_text: #000;
+$color_main: #fff;
+$color_secondary: #ccc;
+$color_accent: #82ff69;
+
+// default setting
+
+$color__background-body: $color_bg;
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
@@ -8,10 +18,10 @@ $color__background-ins: #fff9c0;
 $color__text-screen: #21759b;
 $color__text-input: #666;
 $color__text-input-focus: #111;
-$color__link: #4169e1; //royalblue
-$color__link-visited: #800080; //purple
+$color__link: $color_header_text;
+$color__link-visited: $color_header_text;
 $color__link-hover: #191970; //midnightblue
-$color__text-main: #404040;
+$color__text-main: $color_main;
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;
