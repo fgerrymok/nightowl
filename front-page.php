@@ -43,6 +43,7 @@
 
                             <!-- Hero CTA Button -->
 							<?php
+                            date_default_timezone_set('America/Vancouver');
 							$current_hour = date("H");
 							if ($current_hour < 12 ) {
 								$category_slug = "breakfast";
