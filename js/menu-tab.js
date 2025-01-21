@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to calculate the offset of an element from the top of the document
     const getOffset = (element) => {
         const rect = element.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
         return rect.top + scrollTop;
     };
 
