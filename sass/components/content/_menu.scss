@@ -8,8 +8,13 @@
 }
 
 /* --------------------------------------------- */
+.single-category-wrapper{
+  margin-top: 2.5rem;
+}
 
-.menu-items{
-  max-height: 75vh;
-  overflow-y: auto;
+@media(min-width:768px){
+  .single-category-wrapper{
+    margin-top: 2.5rem;
+    margin-left: 15rem;
+  }
 }

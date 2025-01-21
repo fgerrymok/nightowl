@@ -1,0 +1,35 @@
+@media(min-width:768px){
+    .all-menus-wrapper{
+        .top-menu-wrapper{
+            margin: 0;
+
+            .top-menu-nav{
+                >:first-child{
+                    padding-left: 0;
+                }
+            }
+        }
+        .sidebar-menu-wrapper{
+            .sidebar-dismiss-wrapper{
+                position: sticky;
+                top: 10rem;
+                width: 15rem;
+                background-color: $color_bg;
+                .sidebar-menu-nav{
+                    li{
+                        padding-left: 8px;
+                    }
+                    .side-active{
+                        color: white;border-left: 2px solid white;
+                    }
+                }
+                .dismiss-btn{
+                    display: none;
+                }
+            }
+            .sidebar-menu-button{
+                display: none;
+            }
+        }
+    }
+}
