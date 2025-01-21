@@ -61,15 +61,18 @@ function output_menu_subnavigation() {
                 <div class='all-menus-wrapper'>
                 <div class='sidebar-menu-wrapper'>
                         <svg class='sidebar-menu-button' clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 16.75c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75zm0-5c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z" fill-rule="nonzero"/></svg>
-                        <ul class="menu-subnav sidebar-menu-nav">
-                        <?php
-                        foreach($terms as $term) {
-                            ?>
-                            <li class='sidebar-menu-item' data-term="<?php echo esc_attr($term->slug); ?>"><?php echo esc_html($term->name); ?></li>
+                        <div class='sidebar-dismiss-wrapper'>
+                            <ul class="menu-subnav sidebar-menu-nav">
                             <?php
-                        }
-                        ?>
-                        </ul>
+                            foreach($terms as $term) {
+                                ?>
+                                <li class='sidebar-menu-item' data-term="<?php echo esc_attr($term->slug); ?>"><?php echo esc_html($term->name); ?></li>
+                                <?php
+                            }
+                            ?>
+                            </ul>
+                            <button class='dismiss-btn'>Dismiss</button>
+                        </div>
                     </div>
                     <div class='top-menu-wrapper'>
                         <ul class="menu-subnav top-menu-nav">
