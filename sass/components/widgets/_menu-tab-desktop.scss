@@ -15,12 +15,18 @@
                 top: 10rem;
                 width: 15rem;
                 background-color: $color_bg;
+                font-size: 14px;
                 .sidebar-menu-nav{
                     li{
-                        padding-left: 8px;
+                        padding: 0 8px;
+                        max-height: 100%;
+                        margin-bottom: 1rem;
                     }
                     .side-active{
                         color: white;border-left: 2px solid white;
+                    }
+                    &:last-child{
+                        margin-bottom: 3rem;
                     }
                 }
                 .dismiss-btn{

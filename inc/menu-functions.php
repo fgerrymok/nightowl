@@ -85,6 +85,7 @@ function output_menu_subnavigation() {
                         ?>
                         </ul>
                         <div class="tab-indicator"></div>
+                        <div class='tab-indicator-wrapper'></div>
                     </div>
                 </div>
                 <?php

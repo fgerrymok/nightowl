@@ -8,13 +8,13 @@
 }
 
 /* --------------------------------------------- */
-.single-category-wrapper{
-  margin-top: 2.5rem;
-}
-
-@media(min-width:768px){
   .single-category-wrapper{
     margin-top: 2.5rem;
-    margin-left: 15rem;
   }
+
+@media(min-width:768px){
+    .single-category-wrapper{
+      margin-left: 15rem;
+    }
+
 }
