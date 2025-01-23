@@ -39,7 +39,7 @@
             li{
                 width: auto;
                 min-width: fit-content;
-                padding: 8px 8px 12px;
+                padding: 8px 8px;
             }
             &::-webkit-scrollbar {
                 display: none;
@@ -81,9 +81,11 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                z-index: 1000;
+                z-index: 3000;
+                overflow-y: hidden;
 
             .sidebar-menu-nav{
+                overflow-y: scroll;
                 padding: 1rem 2rem 0;
                 margin: 0;
                 display: flex;
