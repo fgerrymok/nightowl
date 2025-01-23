@@ -4,6 +4,9 @@
             margin: 0;
 
             .top-menu-nav{
+                li{
+                    padding: 8px 8px 12px;
+                }
                 >:first-child{
                     padding-left: 0;
                 }
@@ -16,7 +19,9 @@
                 width: 15rem;
                 background-color: $color_bg;
                 font-size: 14px;
+                overflow-y: visible;
                 .sidebar-menu-nav{
+                    overflow-y: visible;
                     li{
                         padding: 0 8px;
                         max-height: 100%;
