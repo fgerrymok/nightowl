@@ -1,3 +1,7 @@
+.site {
+  overflow: hidden;
+}
+
 .menu-items {
   list-style-type: none;
   margin: 16px;
@@ -13,6 +17,14 @@
   }
   li {
     padding-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .woocommerce-LoopProduct-link {
+      flex: 1 !important;
+    }
+
     a {
       display: flex;
       flex-direction: column;
@@ -40,6 +52,19 @@
       .price {
         order: 2;
       }
+    }
+
+    .add_to_cart_button {
+      color: #fff;
+      width: fit-content;
+    }
+
+    .add_to_cart_button:hover {
+      color: $color_accent;
+    }
+
+    .added_to_cart {
+      display: none;
     }
   }
 }
