@@ -4,6 +4,8 @@
     max-width: 62.5rem;
 }
 
+// Cart
+
 .wc-block-cart-items {
     .wc-block-cart-item__image {
         a {
@@ -43,6 +45,10 @@
 
     a {
         text-decoration: none;
+    }
+
+    a:hover, a:active, a:focus {
+        color: #000;
     }
 }
 
