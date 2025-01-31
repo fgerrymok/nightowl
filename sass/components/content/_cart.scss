@@ -1,0 +1,61 @@
+#post-12 {
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 62.5rem;
+}
+
+// Cart
+
+.wc-block-cart-items {
+    .wc-block-cart-item__image {
+        a {
+            pointer-events: none;
+
+            img {
+                width: 5rem !important;
+                height: 5rem !important;
+                object-fit: cover !important;
+            }
+        }
+    }
+
+    .wc-block-components-product-name {
+        color: white !important;
+        pointer-events: none;
+        text-decoration: none;
+    }
+
+    .wc-block-components-product-metadata__description {
+        display: none;
+    }
+}
+
+// Coupon
+
+.wc-block-components-totals-coupon__form {
+    #wc-block-components-totals-coupon__input-0, button {
+        background-color: $color_header_bg;
+    }
+}
+
+// Checkout Button
+
+.wc-block-cart__submit-container {
+    background-color: $color_header_bg;
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover, a:active, a:focus {
+        color: #000;
+    }
+}
+
+.wc-block-cart__submit-container::before {
+    background-color: $color_header_bg;
+
+    a {
+        text-decoration: none;
+    }
+}
