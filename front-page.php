@@ -86,21 +86,21 @@
 
             <article class='noc-featured-item item-2'>
                 <div class='item-info'>
-                    <h3>Meat Lover's Steak Combo</h3>
-                    <p>A hearty combination of tender beef steak, juicy pork chop steak, jumbo cheese sausage, crispy bacon, and a perfectly cooked egg for a satisfying, protein-packed meal.</p>
+                    <h3>Pork Sausage & Egg Tossed Noodle</h3>
+                    <p>Flavourful pork sausage topped with a sunny-side-up egg, tossed with Ichiban noodles.</p>
                 </div>
                 <div class="item-img">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/hearty-combo.png" alt="Hearty Combo Breakfast">
+                    <img src="<?php echo get_template_directory_uri();?>/assets/tossed-noodle-compressed.png" alt="Tossed Noodle">
                 </div>
             </article>
 
             <article class='noc-featured-item item-3'>
                 <div class="item-img">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/hearty-combo.png" alt="Hearty Combo Breakfast">
+                    <img src="<?php echo get_template_directory_uri();?>/assets/noodle-soup-compressed.png" alt="Preserved Vegetable & Pork Noodle Soup">
                 </div>
                 <div class='item-info'>
-                    <h3>Satay Beef Soup Noodle</h3>
-                    <p>A flavourful noodle soup with tender beef and a rich, aromatic satay broth, offering a perfect blend of spices.</p>
+                    <h3>Preserved Vegetable & Pork Noodle Soup</h3>
+                    <p>Tender pork and savoury preserved vegetables in a flavorful broth.</p>
                 </div>
             </article>
         </section>
