@@ -1,3 +1,7 @@
+#post-2 {
+  display: none;
+}
+
 .site-main.page-info {
   margin: 16px;
   margin-bottom: 80px;
@@ -91,6 +95,10 @@
   pointer-events: none;
 }
 
+.about-phone-number, .about-phone-number:visited, .about-phone-number:hover, .about-phone-number:focus, .about-phone-number:active {
+  color: white;
+}
+
 @media (min-width: $breakpoint-desktop-lrg) {
   .site-main.page-info {
     display: grid;
@@ -113,3 +121,5 @@
     }
   }
 }
+
+

@@ -83,7 +83,7 @@ get_header();
 					the_row();
 
 					echo "<h2 class='section-heading'>" . esc_html( get_sub_field( 'section_heading' ) ) . "</h2>";
-					echo "<p class='phone-number'>" . esc_html( get_sub_field( 'phone_number' ) ) . "</p>";
+					echo "<a href='tel:604-276-0576' class='about-phone-number'>" . esc_html( get_sub_field( 'phone_number' ) ) . "</a>";
 				}
 				echo "</section>";
 			}
