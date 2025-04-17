@@ -32,7 +32,7 @@
 		</section>
 		<section class="site-info">
 				<div>
-					<p><?php echo esc_html("Delivery"); ?></p>
+					<p><?php echo esc_html("Order"); ?></p>
 					<?php wp_nav_menu( array(
 						'menu' => 'footer-delivery'
 						) ); ?>

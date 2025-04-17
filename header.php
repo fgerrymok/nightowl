@@ -87,6 +87,9 @@
 		</svg>
 		Order Now</button>
         <div id="fab-menu" class="fab-menu hidden">
+			<a href="https://nightowlcafe.bitebuddy.ca/order/" target="_blank" class="fab-item">
+				<?php echo esc_html('Order Pickup') ?>				
+			</a>
             <a href="https://www.doordash.com/store/night-owl-cafe-%E7%8C%AB%E5%A4%B4%E9%B9%B0-richmond-19[…]tid=AfmBOorFnVFKhQmHlsEnmLU0RhWfUNe3wEeZ-yYlOY3QzzfSGSZ5xpHq" target="_blank" class="fab-item">
 				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/door-dash.png' ); ?>" alt="Doordash Logo" class="online-order-logo" />						
 			</a>

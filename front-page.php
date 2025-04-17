@@ -54,7 +54,7 @@
 							$category = get_term_by('slug', $category_slug, 'product_cat');
 							$menu_link = get_term_link($category);
 							?>
-							<a href='<?php echo esc_url($menu_link); ?>'>View Our Menu</a>
+							<a href='<?php echo esc_url('https://nightowlcafe.bitebuddy.ca/order/'); ?>'>View Our Menu</a>
                         </div>
 
                         <!-- Hero Image -->
@@ -127,6 +127,9 @@
                     <?php if($order_heading): ?>
                         <p class="order-now-heading"><?php echo esc_html($order_heading); ?></p>
                     <?php endif; ?>
+
+                    <!-- Pickup CTA Button -->
+                    <a href='<?php echo esc_url('https://nightowlcafe.bitebuddy.ca/order/'); ?>'><?php echo esc_html('Pickup'); ?></a>
     
                     <!-- UberEats CTA Button -->
                     <?php if($label_uberEats && $button_uberEats): ?>
